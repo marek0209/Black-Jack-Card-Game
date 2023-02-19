@@ -1,3 +1,5 @@
+import apiService from "../CardApiService";
+
 const GameLogicService = {
   getScore: (card, score) => {
     if (card) {
@@ -14,8 +16,8 @@ const GameLogicService = {
           return parseInt(card.value);
       }
     }
-
     return score;
   },
 };
+
 export default GameLogicService;
