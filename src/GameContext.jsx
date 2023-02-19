@@ -5,7 +5,7 @@ export const AppContext = createContext();
 
 export const AppProvider = (props) => {
   const [gameState, setGameState, gameStateRef] = useStateRef({
-    deckId: "",
+    deckId: undefined,
     dealerHand: "",
     userHand: "",
     gameInProgress: false,
