@@ -30,7 +30,7 @@ const gameLogicService = {
         userCards = await apiService.drawCard(id, 2);
       }
       dealerCards.cards[0].image =
-        "https://cdn.pixabay.com/photo/2012/05/07/18/52/card-game-48980_960_720.png";
+        "https://deckofcardsapi.com/static/img/back.png";
       setGameState({
         ...gameState,
         userScore: gameLogicService.sumFirstTwoCardValue(

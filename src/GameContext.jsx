@@ -4,6 +4,7 @@ import useStateRef from "react-usestateref";
 export const AppContext = createContext();
 
 export const AppProvider = (props) => {
+  console.log("State is changing");
   const [gameState, setGameState, gameStateRef] = useStateRef({
     deckId: undefined,
     dealerHand: "",
@@ -21,6 +22,8 @@ export const AppProvider = (props) => {
     roundWinner: undefined,
     userName: undefined,
   });
+
+  console.log(gameState.deckId);
 
   return (
     <AppContext.Provider value={{ gameState, setGameState, gameStateRef }}>
