@@ -12,7 +12,7 @@ export const AppProvider = (props) => {
     gameInProgress: false,
     userScore: 0,
     dealerScore: 0,
-    roundCounter: 1,
+    roundCounter: 0,
     moneyState: 1000,
     bet: 0,
     roundHistory: [],
