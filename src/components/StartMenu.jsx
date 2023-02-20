@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import { AppContext } from "../GameContext";
-import gameLogicService from "../services/GameLogicService";
 import apiService from "../services/CardApiService";
+import Deck from "./Deck";
 
 const StartMenu = () => {
   const { gameState, setGameState } = useContext(AppContext);
@@ -23,9 +23,20 @@ const StartMenu = () => {
   });
 
   const startGame = async () => {
-    gameLogicService.getFirstCards(gameState.deckId, gameState, setGameState);
+    await setGameState({
+      ...gameState,
+      gameInProgress: true,
+      gameIsEnd: false,
+      roundCounter: 1,
+    });
   };
-
+  if (gameState.gameInProgress === true) {
+    return (
+      <>
+        <Deck />
+      </>
+    );
+  }
   return (
     <div>
       <h1>Start Menu</h1>
