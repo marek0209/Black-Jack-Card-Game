@@ -2,13 +2,18 @@ import React, { useContext, useEffect } from "react";
 import gameLogicService from "../services/GameLogicService";
 import { AppContext } from "../GameContext";
 import DisplayCards from "./DisplayCards";
+import ActionButton from "./ActionButton";
 
 function Deck(props) {
-  const { gameState, setGameState } = useContext(AppContext);
+  const { gameState, setGameState, gameStateRef } = useContext(AppContext);
 
   useEffect(() => {
     gameLogicService.getFirstCards(gameState.deckId, gameState, setGameState);
   }, [gameState.gameIsEnd]);
+
+  const handleClickHitAction = () => {
+    gameLogicService.hitAction(gameState, setGameState, gameStateRef);
+  };
 
   return (
     <div>
@@ -17,6 +22,7 @@ function Deck(props) {
       <DisplayCards cards={gameState.dealerHand} />
       <h2>UserCards</h2>
       <DisplayCards cards={gameState.userHand} />
+      <ActionButton text="Hit" fn={handleClickHitAction} />
     </div>
   );
 }

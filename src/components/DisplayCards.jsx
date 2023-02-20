@@ -5,11 +5,11 @@ const DisplayCards = (props) => {
   if (cards)
     return (
       <div className="w-100 h-25 d-flex align-item-flex-end justify-content-center p-1">
-        {cards.map((card) => {
+        {cards.map((card, id) => {
           return (
             <img
               className="gameCard"
-              key={card.code}
+              key={id}
               src={card.image}
               alt={card.code}
             />

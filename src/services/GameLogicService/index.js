@@ -54,6 +54,31 @@ const gameLogicService = {
     });
     return tempScore;
   },
+  hitAction: async (gameState, setGameState, gameStateRef) => {
+    if (gameState.deckId) {
+      const { data: card } = await apiService.drawCard(gameState.deckId, 2);
+      setGameState({
+        ...gameState,
+        userScore:
+          gameState.userScore +
+          gameLogicService.getScore(card.cards[0], gameState.userScore),
+        userHand: [...gameState.userHand, card.cards[0]],
+      });
+      if (gameStateRef.dealerScore < 17 && gameStateRef.userScore < 21) {
+        setGameState({
+          dealerHand: [...gameState.dealerHand, card.cards[1]],
+          dealerScore:
+            gameState.dealerScore +
+            gameLogicService.getScore(card.cards[1], gameState.dealerScore),
+        });
+      }
+      if (gameStateRef.userScore > 21 || gameStateRef.dealerScore > 21) {
+        console.log("End of a Game");
+      }
+    } else {
+      cardActions.hitAction();
+    }
+  },
 };
 
 export default gameLogicService;
