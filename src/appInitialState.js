@@ -1,0 +1,17 @@
+export const appInitialState = {
+  deckId: undefined,
+  dealerHand: "",
+  userHand: "",
+  gameInProgress: false,
+  userScore: 0,
+  dealerScore: 0,
+  roundCounter: 0,
+  moneyState: 1000,
+  bet: 0,
+  roundHistory: [],
+  showBetModal: false,
+  showEndOfRoundModal: false,
+  gameIsEnd: false,
+  roundWinner: undefined,
+  userName: undefined,
+};
