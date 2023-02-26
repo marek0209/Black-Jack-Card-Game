@@ -79,6 +79,12 @@ const gameLogicService = {
       cardActions.hitAction();
     }
   },
+  standAction: (setGameState) => {
+    state.setGameInProgress(false);
+    setGameState({
+      gameInProgress: false,
+    });
+  },
 };
 
 export default gameLogicService;
